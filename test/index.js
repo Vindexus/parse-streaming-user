@@ -1,7 +1,7 @@
 
 var parse = require('../')
 
-describe('youtube url parser', function(){
+describe('streaming url parser', function(){
   it('work', function(){
     parse('http://m.youtube.com/channel/UC5F2oUCU91HQMjCxJeODGsA')
     .should.equal('UC5F2oUCU91HQMjCxJeODGsA')
@@ -41,5 +41,13 @@ describe('youtube url parser', function(){
     parse('youtube.com/user/ThatKaiburGuy').should.equal('ThatKaiburGuy')
 
     parse('jackbox55').should.equal('jackbox55')
+
+    parse('twitch.tv/vindexus').should.equal('vindexus')
+    parse('http://twitch.tv/vindexus').should.equal('vindexus')
+    parse('https://www.twitch.tv/vindexus').should.equal('vindexus')
+    parse('https://www.twitch.tv/vindexus/profile').should.equal('vindexus')
+
+    parse('beam.pro/vindexus').should.equal('vindexus')
+    parse('https://www.beam.pro/vindexus').should.equal('vindexus')
   });
 });
